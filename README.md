@@ -65,7 +65,7 @@ If `odin` accepts the file, a parse error is the grammar's fault and nothing
 else. That check already caught a construct `tree-sitter-odin` accepts but Odin
 rejects (`import { "core:os", "core:slice" }`).
 
-## Building
+## Building and checking
 
 `src/` is committed, so consumers need only a C compiler. To regenerate after
 editing `grammar.js`:
@@ -73,6 +73,17 @@ editing `grammar.js`:
 ```bash
 tree-sitter generate
 ```
+
+`check.sh` regenerates, reports the table size, and counts how many files the
+grammar fails to parse cleanly:
+
+```bash
+./check.sh                            # example-code.odin only
+ODIN_SRC=~/code/Odin ./check.sh --stdlib
+```
+
+It clones tree-sitter into `.build/` on first run; set `TS` to point at an
+existing checkout's `lib/` instead.
 
 ## Known limitations
 
