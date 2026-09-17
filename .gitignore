@@ -1,0 +1,7 @@
+# src/ is committed on purpose: consumers build parser.c without needing the
+# tree-sitter CLI.
+*.o
+*.obj
+*.exe
+.build/
+node_modules/
